@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+   <div class="container">
+    <div class="card">
+        <label for="username">اسم المستخدم</label>
+        <input type="text" placeholder="اسم المستخدم" id="username">
+        <label for="password">كلمة المرور</label>
+        <input type="password" placeholder="كلمة المرور" id="password">
+        <button id="btn" >تسجيل الدخول</button>
+    </div>
+   </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script>
+        const SUPABASE_URL = "https://jyibiwhfbidwynraokru.supabase.co"
+const SUPABASE_ANON_KEY = "sb_publishable_GjdN315AEBfXfNGfdO5XiA_HYdFiHmU"
+const supabaseclient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+async function login() {
+    const email = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const { data, error} = await supabaseclient.auth.signInWithPassword({
+        email: email,
+        password: password
+    });
+    if (error) {
+    alert('فشل تسجيل الدخول: ' + error.message);
+}else {
+    alert('تم تسجيل الدخول بنجاح');
+    window.location.href = 'crud.html';
+}
+}
+
+document.getElementById('btn').addEventListener('click', login);
+    </script>
+</body>
+</html>
