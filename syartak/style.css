@@ -1,0 +1,130 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 55vh;
+    img {
+  width: 300px;
+  height: auto;
+        object-fit: contain;
+    margin: 0 auto;
+    }
+}
+h2 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.75rem;
+}
+footer {
+    width: 100%;
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    p {
+        font-size: 1.25rem;
+    }
+    i {
+        padding:10px;
+        font-size: 1.50rem;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+#products-container, #crud-products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+.car-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: #fff;
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    overflow: hidden !important;
+    border: 1px solid #eee;
+    box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.07);
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    padding: 15px 15px 0px 15px;
+   
+    .car-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+    img {
+        width: 100% !important;
+        height: 380px !important;
+        border-radius: 10px ;
+        object-fit: cover !important;
+        margin-bottom: 20px;
+    }
+    a {
+        display: block;
+        width: 100% !important;
+        text-decoration: none;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+    }
+    .add-btn {
+        background: green;
+        color: white;
+        border: none;
+        border-radius: 10px !important;
+        cursor: pointer;
+        width: 100% !important;
+        padding: 10px !important;
+      
+    }
+    h3 {
+        font-size: 1.25rem;
+        margin: 10px 0;
+    }
+    p{
+        font-size: 1.25rem;
+        margin: 5px 0;
+    }
+  align-items: center;
+    padding: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+    @media (max-width: 900px) {
+        #products-container, #crud-products-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 600px) {
+        #products-container, #crud-products-container {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+    input[type="text"] {
+        width: 50%;
+        margin: 0 auto;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
