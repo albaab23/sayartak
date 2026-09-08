@@ -46,40 +46,73 @@ body {
         width: 100px;
     }
 }
-.main1 {
-display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+#products-container, #crud-products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    width: 100%;
+    box-sizing: border-box;
+
 }
 .car-card {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-        border-radius: 10px;
-    padding: 10px;
-    
-
-
-}
-.column {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-        box-shadow: 0 4px 8px 0 rgba(151, 141, 141, 0.1);
-            img {
-        width: 100%;
-        height: 200px;
-        border-radius: 10px;
+    flex-wrap: wrap;
+    background: #fff;
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    overflow: hidden !important;
+    border: 1px solid #eee;
+    box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.07);
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    padding: 15px 15px 0px 15px;
+   
+    .car-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     }
-        .add-btn {
-            background: green;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            width: 100px;
-            padding: 10px;
+    img {
+        width: 100% !important;
+        height: 380px !important;
+        border-radius: 10px ;
+        object-fit: cover !important;
+        margin-bottom: 20px;
+    }
+    .delete-btn {
+        background: red;
+        color: white;
+        border: none;
+        border-radius: 10px !important;
+        cursor: pointer;
+        width: 100% !important;
+        padding: 10px !important;
+      
+    }
+    h3 {
+        font-size: 1.25rem;
+        margin: 10px 0;
+    }
+    p{
+        font-size: 1.25rem;
+        margin: 5px 0;
+    }
+  align-items: center;
+    padding: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+    @media (max-width: 900px) {
+        #products-container, #crud-products-container {
+            grid-template-columns: repeat(2, 1fr);
         }
-}
+    }
+    @media (max-width: 600px) {
+        #products-container, #crud-products-container {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }

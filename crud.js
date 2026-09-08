@@ -76,7 +76,7 @@ function rendercarcard(car, position = 'beforeend') {
             <p>الحالة: ${car.status}</p>
             <p>${car.description}</p>
          <p>السعر: ${car.price} </p>
-         <button onclick="deleteproduct('${car.name}')">حذف</button>
+         <button onclick="deleteproduct('${car.name}')" class="delete-btn">حذف</button>
          </div>
         </div>
         `;
@@ -109,3 +109,18 @@ if (payload.eventType === 'INSERT') {
 })
 .subscribe();
 fetchcars();
+const inputSearch = document.getElementById('search-input');
+if (inputSearch) {
+    inputSearch.addEventListener('input', function () {
+const query = inputSearch.value.trim().toLowerCase();
+const carCards = document.querySelectorAll('.car-card');
+carCards.forEach(card => {
+    const carName = card.querySelector('h3').textContent.toLowerCase();
+    if (carName.includes(query)) {
+        card.style.display = '';
+    } else {
+        card.style.display = 'none';
+    }
+  })
+})
+}
