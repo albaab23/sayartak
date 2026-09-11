@@ -35,7 +35,7 @@ const { data: urlData } = supabaseclient.storage.from('car-images').getPublicUrl
      status: status.value,
      image_url: imgurl
    }
- ]);
+ ]).select();
 
 
  if (insertError) {
@@ -53,22 +53,24 @@ status.value = ''
 img.value = ''
 }
 const productsContainer = document.getElementById('crud-products-container');
-async function deleteproduct(name){
-  const confirmDelete = confirm(`هل أنت متأكد أنك تريد حذف المنتج "${name}"؟`);
+async function deleteproduct(id){
+  const confirmDelete = confirm(`هل أنت متأكد أنك تريد حذف المنتج `);
   if (!confirmDelete) {
     return;
   }
-  const {error} = await supabaseclient.from('cars').delete().eq('name', name);
+  const {data, error} = await supabaseclient.from('cars').delete().eq('id', id);
   if (error) {
     console.error('Error deleting car:', error);
     alert('حدث خطأ أثناء حذف المنتج' + error.message || JSON.stringify(error));
     return;
   }
+
 }
+
 function rendercarcard(car, position = 'beforeend') {
-    if(document.getElementById(`car-${car.name}`)) return
+    if(document.getElementById(`car-${car.id}`)) return
      const carCard = `
-        <div class="car-card" id="car-${car.name}">
+        <div class="car-card" id="car-${car.id}">
         <div class="cloumn">
         <img src="${car.image_url}" alt="${car.name}" style="width: 250px; height: auto;"/>
             <h3>${car.name}</h3>
@@ -76,7 +78,7 @@ function rendercarcard(car, position = 'beforeend') {
             <p>الحالة: ${car.status}</p>
             <p>${car.description}</p>
          <p>السعر: ${car.price} </p>
-         <button onclick="deleteproduct('${car.name}')" class="delete-btn">حذف</button>
+         <button onclick="deleteproduct('${car.id}')" class="delete-btn">حذف</button>
          </div>
         </div>
         `;
@@ -101,7 +103,7 @@ if (payload.eventType === 'INSERT') {
     rendercarcard(payload.new, 'afterbegin');
 }else if (payload.eventType === 'DELETE') {
     console.log('Car deleted:', payload.old);
-    const deletedcar = document.getElementById(`car-${payload.old.name}`);
+    const deletedcar = document.getElementById(`car-${payload.old.id}`);
     if (deletedcar) {
         deletedcar.remove();
     }

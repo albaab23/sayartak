@@ -3,11 +3,11 @@ const SUPABASE_ANON_KEY = "sb_publishable_GjdN315AEBfXfNGfdO5XiA_HYdFiHmU"
 const supabaseclient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const productsContainer = document.getElementById('products-container');
 function rendercarcard(car, position = 'beforeend') {
-    if(document.getElementById(`car-${car.name}`)) return
+    if(document.getElementById(`car-${car.id}`)) return
     const phonenumber = '0934129016'
     const whatsappmessage = encodeURIComponent(`مرحبًا، أنا مهتم بالسيارة "${car.name}" التي رأيتها على موقعكم. هل يمكنني الحصول على مزيد من التفاصيل؟`);
      const carCard = `
-        <div class="car-card" id="car-${car.name}">
+        <div class="car-card" id="car-${car.id}">
         <img src="${car.image_url}" alt="${car.name}" style="width: 250px; height: auto;"/>
             <h3>${car.name}</h3>
             <p>كرت:${car.year}</p>
@@ -40,7 +40,7 @@ if (payload.eventType === 'INSERT') {
     rendercarcard(payload.new, 'afterbegin');
 }else if (payload.eventType === 'DELETE') {
     console.log('Car deleted:', payload.old);
-    const deletedcar = document.getElementById(`car-${payload.old.name}`);
+    const deletedcar = document.getElementById(`car-${payload.old.id}`);
     if (deletedcar) {
         deletedcar.remove();
     }
