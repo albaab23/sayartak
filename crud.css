@@ -9,42 +9,143 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    gap: 10px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f7fafc 0%, #c3cfe2 100%);
+    gap: 36px;
+    padding: 40px 0;
+    box-sizing: border-box;
+}
 
-    input {
-        display: flex;
-        flex-direction: column;
-        width: 200px;
-        height: 50px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-    }
+/* ترتيب حقول الادخال داخل شبكة */
+.form-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 32px;
+    background: rgba(255,255,255,0.85);
+    padding: 36px 34px;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(106,130,251,0.07);
+    margin-bottom: 20px;
+    max-width: 500px;
+    width: 100%;
+}
 
-    textarea {
-        width: 200px;
-        height: 50px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-    }
+.form-fields input,
+.form-fields textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 14px 18px;
+    border: 1.5px solid #bfc9d9;
+    border-radius: 14px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: #fff;
+    outline: none;
+    color: #222f3e;
+    box-sizing: border-box;
+}
+.form-fields textarea {
+    resize: vertical;
+    min-height: 75px;
+    grid-column: span 2;
+}
 
-    input[placeholder] {
-        text-align: center;
-    }
+.form-fields input[placeholder],
+.form-fields textarea[placeholder] {
+    text-align: center;
+    color: #7c859d;
+    opacity: 0.90;
+}
+.form-fields input:focus,
+.form-fields textarea:focus {
+    border-color: #6a82fb;
+    box-shadow: 0 4px 14px 0 rgba(106,130,251,0.11);
+}
 
-    textarea[placeholder] {
-        text-align: center;
-    }
+.main button {
+    background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%);
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    padding: 15px 0;
+    width: 170px;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px 0 rgba(252, 92, 125, 0.10);
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.12s;
+    margin-top: 10px;
+}
+.main button:hover {
+    background: linear-gradient(90deg, #fc5c7d 20%, #6a82fb 100%);
+    transform: translateY(-2px) scale(1.04);
+}
 
-    button {
-        background-color: blue;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        padding: 15px;
-        width: 100px;
-    }
+/* تحسين الكروت وجعل الصورة بعرض كامل الكرت */
+.car-card {
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 6px 30px 0 rgba(80, 109, 199, 0.11);
+    border: none;
+    padding: 0 0 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    position: relative;
+    transition: box-shadow 0.25s, transform 0.18s;
+    overflow: hidden;
+    width: 100%;
+    max-width: 380px;
+}
+
+.car-card:hover {
+    box-shadow: 0 12px 32px 0 rgba(80, 109, 199, 0.18);
+    transform: translateY(-5px) scale(1.015);
+}
+.car-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 22px 22px 0 0;
+    box-shadow: none;
+    display: block;
+    margin: 0;
+    background: #f0f3fa;
+}
+.car-card h3 {
+    font-size: 1.28rem;
+    color: #2e3856;
+    margin: 12px 0 0 0;
+    font-weight: 700;
+    align-self: flex-start;
+    padding: 0 22px;
+}
+.car-card p {
+    color: #6c788c;
+    margin: 5px 0 12px 0;
+    font-size: 1rem;
+    text-align: left;
+    align-self: flex-start;
+    padding: 0 22px;
+}
+.car-card .delete-btn {
+    background: linear-gradient(90deg, #ff4747 0%, #fb6a6a 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 92%;
+    padding: 10px 0px;
+    font-weight: 600;
+    margin-top: 8px;
+    transition: background 0.16s, transform 0.13s;
+    box-shadow: 0 2px 7px rgba(251,76,76,0.09);
+}
+.car-card .delete-btn:hover {
+    background: linear-gradient(90deg, #fb6a6a 0%, #ff4747 100%);
+    transform: translateY(-1px) scale(1.027);
 }
 
 #products-container, #crud-products-container {
@@ -94,6 +195,20 @@ body {
         padding: 10px !important;
       
     }
+    .car-images {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        overflow-x: auto;
+        margin-bottom: 10px;
+    }
+    .car-images img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
+    flex-shrink: 0;
+    }
     h3 {
         font-size: 1.25rem;
         margin: 10px 0;
@@ -114,5 +229,6 @@ body {
     @media (max-width: 600px) {
         #products-container, #crud-products-container {
             grid-template-columns: repeat(1, 1fr);
+            width: 80%;
         }
     }

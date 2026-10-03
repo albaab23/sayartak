@@ -8,7 +8,9 @@ function rendercarcard(car, position = 'beforeend') {
     const whatsappmessage = encodeURIComponent(`مرحبًا، أنا مهتم بالسيارة "${car.name}" التي رأيتها على موقعكم. هل يمكنني الحصول على مزيد من التفاصيل؟`);
      const carCard = `
         <div class="car-card" id="car-${car.id}">
-        <img src="${car.image_url}" alt="${car.name}" style="width: 250px; height: auto;"/>
+        <div class="car-images">
+            ${car.image_url.map(url => `<img src="${url}" alt="${car.name}" style="width: 250px; height: auto;"/>`).join('')}
+        </div>
             <h3>${car.name}</h3>
             <p>كرت:${car.year}</p>
             <p>الحالة: ${car.status}</p>
