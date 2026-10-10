@@ -217,6 +217,11 @@ h3 {
             grid-template-columns: repeat(1, 1fr);
         }
     }
+    @media (max-width: 768px) {
+        .search-filter {
+            width: 60%;
+        }
+    }
     input[type="text"] {
         width: 50%;
         margin: 0 auto;
