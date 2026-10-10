@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #0d1421;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100vh;
+    label {
+        color: white;
+        font-size: 1.50rem;
+
+    }
+    input {
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+        padding: 10px;
+        background: #162032;
+        border-radius: 10px;
+        border: 1px solid white;
+        color: white;
+    }
+    button {
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px;
+        width: 100%;
+        margin-top: 15px;
+        font-size: 1.50rem;
+    }
+    label {
+      text-align: right;
+      width: 100%;
+      margin-top: 20px;
+    }
+    span {
+        color: white;
+        font-size: 1.25rem;
+    }
+}
+.count {
+    text-align: left;
+    margin-bottom: 20px;
+    border: 2px solid orange;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px 0 rgba(255, 165, 0, 0.3);
+    padding: 4px 12px;
+    background-color: #1c263a;
+    display: inline-block;
+    width: 100%;
+}
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* لجعل الفورم في منتصف الصفحة */
+    position: absolute;
+    justify-content: space-between;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #162032;
+    box-shadow: 0 4px 32px 0 rgba(13, 20, 33, 0.8);
+    padding: 40px;
+    border-radius: 18px;
+    width: 40%;
+    margin-top: 20px;
+    max-width: 90%;
+    height: auto;
+    /* تخصيص حقول الـ range داخل الديف */
+    input[type="range"] {
+        accent-color: orange;
+        /* يمكنك تخصيص مزيد من المظهر حسب الحاجة */
+    }
+}
+@media(max-width: 768px) {
+    .details {
+      width: 60%;
+    }
+}

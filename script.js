@@ -4,28 +4,40 @@ const supabaseclient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_
 const productsContainer = document.getElementById('products-container');
 function rendercarcard(car, position = 'beforeend') {
     if(document.getElementById(`car-${car.id}`)) return
-    const phonenumber = '0934129016'
-    const whatsappmessage = encodeURIComponent(`مرحبًا، أنا مهتم بالسيارة "${car.name}" التي رأيتها على موقعكم. هل يمكنني الحصول على مزيد من التفاصيل؟`);
      const carCard = `
+     <a href="cardetails.html?id=${car.id}" class="link"> 
         <div class="car-card" id="car-${car.id}">
         <div class="car-images">
             ${car.image_url.map(url => `<img src="${url}" alt="${car.name}" style="width: 250px; height: auto;"/>`).join('')}
         </div>
+        <div class="details">
             <h3>${car.name}</h3>
-            <p>كرت:${car.year}</p>
-            <p>الحالة: ${car.status}</p>
-            <p>${car.description}</p>
          <p>السعر: ${car.price} </p>
-         <a href="https://wa.me/${phonenumber}?text=${whatsappmessage}" target="_blank">
-            <button class="add-btn">اطلب الان</button>
-         </a>
+         </div>
         </div>
+        </a>
         `;
         productsContainer.insertAdjacentHTML(position, carCard);
 
 }
 async function fetchcars (){
-    const { data: cars, error } = await supabaseclient.from('cars').select('*').order('name', { ascending: false });
+let params = new URLSearchParams(window.location.search);
+let modelFilter = params.get('model');
+let priceFilter = params.get('price');
+let yearFilter = params.get('year');
+let query = supabaseclient.from('cars').select('*');
+if (modelFilter) {
+    query = query.ilike('name', '%' + modelFilter + '%');
+}
+if (priceFilter) {
+    query = query.lte('price', Number(priceFilter));
+}
+if (yearFilter) {
+    query = query.gte('year', Number(yearFilter));
+}
+
+const { data: cars, error } = await query.order('name', { ascending: false });
+
     if (error) {
         console.error('Error fetching cars:', error);
         return;
@@ -50,19 +62,3 @@ if (payload.eventType === 'INSERT') {
 })
 .subscribe();
 fetchcars();
-const searchInput = document.getElementById('search-input');
-if (searchInput) {
-    searchInput.addEventListener('input', function () {
-const query = searchInput.value.trim().toLowerCase();
-const carCards = document.querySelectorAll('.car-card');
-carCards.forEach(card => {
-    const carName = card.querySelector('h3').textContent.toLowerCase();
-    if (carName.includes(query)) {
-        card.style.display = '';
-    } else {
-        card.style.display = 'none';
-    }
-});
-    })
-}
-

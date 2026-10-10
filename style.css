@@ -1,3 +1,50 @@
+#products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+    gap: 20px;
+    padding: 32px 16px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* لو الكروت قليلة، اظبط محاذاتها لمنتصف الصفحة */
+#products-container:empty {
+    justify-items: center;
+}
+
+.car-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px 0 rgba(13, 20, 33, 0.13);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto; /* لضمان عدم الالتصاق بالاطراف */
+    max-width: 100%;
+    transition: box-shadow 0.2s;
+}
+.car-card:hover {
+    box-shadow: 0 10px 32px 0 rgba(13, 20, 33, 0.20);
+}
+
+/* التأكد من الهوامش الجانبية دائماً */
+/* شفافية الكارت وسط السيكشن في جميع الشاشات */
+@media (max-width: 700px) {
+    #products-container {
+        grid-template-columns: 1fr;
+        padding: 16px 4vw;
+        gap: 12px;
+    }
+    .car-card {
+        min-width: 0;
+        width: 100%;
+    }
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -6,7 +53,6 @@ body, html {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #e3ecfa 0%, #fdf6e3 100%);
     font-family: 'Segoe UI', 'Cairo', Arial, sans-serif;
     color: #263045;
     transition: background 0.25s;
@@ -15,52 +61,39 @@ body, html {
     @media (max-width: 600px) {
         .car-card {
             max-width: 80% !important;
+            margin: 0 auto;
         }
     }
-    .car-card {
-        background: #f9fafb;
-        border-radius: 22px;
-        box-shadow: 0 8px 32px 0 rgba(52, 102, 185, 0.11);
-        border: none;
-        width: 100%;
-        max-width: 380px;
-        padding: 0 0 18px 0;
-        margin: 0 auto 24px auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        transition: box-shadow 0.22s, transform 0.16s;
-        overflow: hidden;
-    }
-    .car-card img {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-        border-radius: 22px 22px 0 0;
-        background: #e6ecfa;
-        box-shadow: none;
-    }
-    .car-card .delete-btn {
-        background: linear-gradient(90deg, #36d1c4 0%, #1fa2ff 100%);
-        color: #fff;
-        border: none;
-        border-radius: 14px;
-        cursor: pointer;
-        width: 92%;
-        padding: 12px 0px;
-        font-weight: 700;
-        margin-top: 10px;
-        font-size: 1rem;
-        transition: background 0.17s, transform 0.12s;
-        box-shadow: 0 2px 9px rgba(31, 162, 255, 0.13);
-        letter-spacing: 0.04em;
-    }
-    .car-card .delete-btn:hover {
-        background: linear-gradient(90deg, #1fa2ff 0%, #36d1c4 100%);
-        transform: scale(1.035) translateY(-2px);
-        filter: brightness(1.08);
-    }
+}
+.car-images {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+  
+  .car-images img {
+    width: 180px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+  
+  .car-images::-webkit-scrollbar {
+    height: 6px;
+  }
+  .car-images::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+  }
+.link {
+    text-decoration: none;
 }
 .main {
     display: flex;
@@ -78,11 +111,20 @@ h2 {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.75rem;
 }
+.chat {
+    color: #888888;
+    font-size: 2rem;
+}
+.name {
+    color: #4facfe;
+}
 footer {
     width: 100%;
-    background-color: #f5f5f5;
+   color: white;
     text-align: center;
     padding: 10px 0;
+    background-color: black;
+
     margin-top: auto;
     p {
         font-size: 1.25rem;
@@ -98,40 +140,61 @@ footer {
 }
 #products-container, #crud-products-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px;
     width: 100%;
     box-sizing: border-box;
 
 }
-.car-card {
-    position: relative;
+
+.search-filter {
+    text-align: center;
+    padding: 10px;
+    width: 400px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 15px;
+background-color: rgb(16, 16, 16);
+color: white;
+font-size: 1.50rem;
+margin-bottom: 20px;
+font-family: 'Courier New', Courier, monospace;
+}
+.details {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    background: #fff;
+    padding: 14px 16px 16px;
+p{
+    font-size: 1.1rem;
+    color: #1a7f37;
+    margin: 0;
+    font-weight: 700;
+}
+h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #111;
+}
+}
+.car-card {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    border-radius: 10px;
-    box-sizing: border-box;
-    transition: transform 0.3s ease;
-    overflow: hidden !important;
-    border: 1px solid #eee;
-    box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.07);
-    gap: 15px;
-    margin-bottom: 20px;
-    justify-content: space-between;
-    padding: 15px 15px 0px 15px;
-   
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     .car-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 10px 24px 0 rgba(0, 0, 0, 0.15);
     }
     img {
         width: 100% !important;
-        height: 380px !important;
-        border-radius: 10px ;
-        object-fit: cover !important;
-        margin-bottom: 20px;
+       object-fit: cover;
+       display: block;
+       aspect-ratio: 4 / 3;
     }
     a {
         display: block;
@@ -142,41 +205,7 @@ footer {
   right: 0;
   margin: 0;
     }
-    .add-btn {
-        background: green;
-        color: white;
-        border: none;
-        border-radius: 10px !important;
-        cursor: pointer;
-        width: 100% !important;
-        padding: 10px !important;
-      
-    }
-    .car-images {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        overflow-x: auto;
-        margin-bottom: 10px;
-    }
-    .car-images img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        border-radius: 10px;
-        flex-shrink: 0;
-    }
-    h3 {
-        font-size: 1.25rem;
-        margin: 10px 0;
-    }
-    p{
-        font-size: 1.25rem;
-        margin: 5px 0;
-    }
-  align-items: center;
-    padding: 10px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+ 
     }
     @media (max-width: 900px) {
         #products-container, #crud-products-container {

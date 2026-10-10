@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="search.css">
+</head>
+<body>
+<div class="form">
+    <div class="details" >
+                    <label for="model">اختر الموديل</label>     
+        <input type="text" id="model">
+        <label for="price-range">نطاق السعر</label>
+        <div style="width:100%;">
+            <span class="count" id="counter1">0$</span>
+            <input type="range" id="price-range" min="0" max="40000" class="counter" value= "0" step="25">
+            <div style="display:flex; justify-content: space-between;">
+                <span>0</span>
+                <span>40000</span>
+            </div>
+        </div>
+
+        <label for="year-range">سنة الانتاج</label>
+        <div style="width:100%;">
+            <span class="count" id="counter2">1990</span>
+            <input type="range" id="year-range" min="1990" max="2026" class="counter" value="1990">
+            <div style="display:flex; justify-content: space-between;">
+                <span>1990</span>
+                <span>2026</span>
+            </div>
+        </div>
+
+        <button id="search-btn" onclick="searchfilter()">عرض السيارة</button>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="search.js"></script>
+</body>
+</html>
