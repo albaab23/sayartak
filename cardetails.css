@@ -4,126 +4,82 @@ body {
     box-sizing: border-box;
     background: #1a253a;
 }
+#cardetails-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.product-cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    background: #232f49;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px 0 rgba(26, 37, 58, 0.75), 0 2px 8px 0 rgba(35, 47, 73, 0.20);
+   padding: 40px;
+    margin: 30px 0;
+    color: #fff;
+    border: 1px solid #232f49;
+
+    h4 {
+        font-size: 2rem;
+        margin: 12px 0 4px 0;
+        color: #f5b041;
+        letter-spacing: 1px;
+        font-weight: 600;
+        text-align: center;
+    }
+    h2 {
+        font-size: 1.50rem;
+        margin: 0 0 7px 0;
+        color: #dbe6fd;
+        font-weight: 400;
+        text-align: center;
+    }
+    p {
+        color: #b3b9c7;
+        font-size: 1.50rem;
+        margin: 4px 0;
+        text-align: center;
+        line-height: 1.6;
+    }
+    .action-btn {
+        margin-top: 16px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+    }
+    .add-btn {
+        background: linear-gradient(90deg, #f5b041 40%, #ffb347 100%);
+        color: #1a253a;
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+        padding: 12px 35px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 2px 8px 0 rgba(245, 176, 65, 0.12);
+        transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
+    .add-btn:hover {
+        background: linear-gradient(90deg, #f59a22 0%, #f5b041 100%);
+        color: #fff;
+        transform: scale(1.045);
+    }
+ 
+}
 .images {
     width: 100%;
-    max-width: 100%;
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 15px;
-  }
-  
-  .images img {
-    width: 100%;
-    flex: 0 0 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 15px;
-    scroll-snap-align: start;
-  }
- 
-h4 {
-    font-size: 3rem;
+    img {
+        width: 100%;
+        height: 400px;
+        object-fit: fill;
+        border-radius: 20px;   
+     }
 }
-.product-cart h2,
-.product-cart .details,
-.product-cart p {
-    margin: 10px 0;
-    color: white;
-    text-align: center;
-    font-size: 2rem;
-}
-
-.product-cart button,
-.product-cart .action-btn {
-    background-color: #ffae33;
-    color: white;
-    border: none;
-    border-radius: 15px;
-    padding:10px ;
-    width: 100%;
-    cursor: pointer;
-    font-size: 1.50rem;
-    transition: background 0.2s;
-}
-.product-cart button:hover,
-.product-cart .action-btn:hover {
-    background-color: #ffc54c;
-}
-
-h4 {
-    font-size: 3rem;
-    color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.product-cart {
-    background: #171f2f;
-    box-shadow: 0 4px 24px 0 rgba(13, 20, 33, 0.25);
-    padding: 30px;
-    margin: 35px auto;
-    width: 90%;
-    border-radius: 20px;
-    max-width: 900px;
-    display: flex;
-    height: 80vh;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 24px; /* Added space between items inside the card */
-}
-
-.product-cart h2 {
-    font-family: 'Tajawal', 'Cairo', 'Arial Rounded MT Bold', Arial, sans-serif;
-    font-weight: bold;
-    font-size: 2.7rem;
-    color: #ffac41;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
-    margin-top: 0;
-}
-#cardetails-product {
-    width: 100%;
-    padding: 28px 30px;
-    background: #1a253a;
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    box-shadow: 0 2px 11px 0 rgba(13,20,33,0.13);
-}
-#cardetails-product h4 {
-    margin: 0;
-    font-size: 2.1rem;
-    color: #ffac41;
-}
-#cardetails-product p, 
-#cardetails-product h2 {
-    font-size: 1.18rem;
-    margin: 0;
-    color: #e8e8e8;
-    line-height: 1.8;
-}
-
-@media (max-width: 768px) {
-    #cardetails-product {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-  
-    .product-cart {
-      width: 90% !important;
-      margin: 0 auto !important;
-      padding: 20px !important;
-      box-sizing: border-box;
-      justify-content: center;
-      align-items: center;
-      height: auto;
-    }
-  
-    .images img {
-      width: 100%;
-      object-fit: cover;
-    }
-  }

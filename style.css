@@ -1,3 +1,5 @@
+
+
 #products-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -35,13 +37,14 @@
 /* شفافية الكارت وسط السيكشن في جميع الشاشات */
 @media (max-width: 700px) {
     #products-container {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         padding: 16px 4vw;
         gap: 12px;
     }
     .car-card {
         min-width: 0;
-        width: 100%;
+        width: 50%;
     }
 }
 
@@ -59,8 +62,14 @@ body, html {
 
     /* تحسين الكروت لعرض احترافي وألوان مريحة */
     @media (max-width: 600px) {
+        #products-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            padding: 16px 4vw;
+            gap: 18px;
+        }
         .car-card {
-            max-width: 80% !important;
+            max-width: 100% !important;
             margin: 0 auto;
         }
     }
@@ -215,6 +224,9 @@ h3 {
     @media (max-width: 600px) {
         #products-container, #crud-products-container {
             grid-template-columns: repeat(1, 1fr);
+        }
+        .search-filter {
+            width: 60%;
         }
     }
     @media (max-width: 768px) {
