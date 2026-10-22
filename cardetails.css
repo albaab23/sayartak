@@ -83,3 +83,14 @@ body {
         border-radius: 20px;   
      }
 }
+@media(max-width: 600px) {
+    .images {
+        width: 100%;
+        img {
+            width: 100%;
+        }
+    }
+    .product-cart {
+        width: 70%;
+    }
+}

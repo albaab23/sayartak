@@ -1,5 +1,4 @@
 
-
 #products-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -59,8 +58,6 @@ body, html {
     font-family: 'Segoe UI', 'Cairo', Arial, sans-serif;
     color: #263045;
     transition: background 0.25s;
-
-    /* تحسين الكروت لعرض احترافي وألوان مريحة */
     @media (max-width: 600px) {
         #products-container {
             display: grid;
@@ -109,10 +106,12 @@ body, html {
     flex-direction: column;
     height: 55vh;
     img {
-  width: 300px;
-  height: auto;
-        object-fit: contain;
+  width: 50%;
+  height: 350px;
+border-radius: 10px;
+        object-fit: fill;
     margin: 0 auto;
+    margin-top: 20px;
     }
 }
 h2 {
@@ -158,16 +157,21 @@ footer {
 
 .search-filter {
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     width: 400px;
     margin: 0 auto;
+    margin-top: 10px;
     border: none;
     border-radius: 15px;
 background-color: rgb(16, 16, 16);
 color: white;
 font-size: 1.50rem;
 margin-bottom: 20px;
+
 font-family: 'Courier New', Courier, monospace;
+a {
+    margin-top: 20px;
+}
 }
 .details {
     display: flex;
