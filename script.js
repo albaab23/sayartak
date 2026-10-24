@@ -8,7 +8,7 @@ function rendercarcard(car, position = 'beforeend') {
      <a href="cardetails.html?id=${car.id}" class="link"> 
         <div class="car-card" id="car-${car.id}">
         <div class="car-images">
-            ${car.image_url.map(url => `<img src="${url}" alt="${car.name}" style="width: 250px; height: auto;"/>`).join('')}
+            ${car.image_url.map(url => `<img src="${url}" alt="${car.name}"  loading="lazy" style="width: 250px; height: auto;"/>`).join('')}
         </div>
         <div class="details">
             <h3>${car.name}</h3>
